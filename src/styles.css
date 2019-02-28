@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+/* tutorial https://medium.com/@beeman/tutorial-styling-angular-cli-v6-apps-with-bootstrap-8d4f8ea5adae*/
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+body{
+  background-color: #1abc9c;
+}

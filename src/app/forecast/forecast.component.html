@@ -1,0 +1,40 @@
+<div id="forecast" class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+    <form [formGroup]="form">
+      <select formControlName="city" (change)="showWeatherForecastFiveDays()" >
+        <option *ngFor="let city of cities" [ngValue]="city">
+          {{ city.name }}
+        </option>
+      </select>
+    </form>
+    </div>
+  </div>
+  <div class="row ui-weather-box" *ngFor = "let weather of weather_forecast">
+    <div class="col-3">
+      <p>{{weather.date| amLocale:'en'| amDateFormat:'ddd, MMM D'}}</p>
+      <p><img id="wicon" src="https://openweathermap.org/img/w/{{weather.icon}}.png" alt="Weather icon">{{weather.description}}</p>
+    </div>
+    <div class="col-3" >
+      <p><span>Temp: </span>{{weather.temperature}}<span>°F</span></p>
+      <div *ngIf="!weather.isLowAndHighTempsEqual();">
+        <p><span>High: </span>{{weather.temperature_high}}<span>°F</span></p>
+        <p><span>Low: </span>{{weather.temperature_low}}<span>°F</span></p>
+      </div>
+    </div>
+    <div class="col-3">
+      <p>Wind Speed:</p>
+      <p>{{weather.wind_speed}} mph</p>
+    </div>
+    <div class="col-3">
+      <p>Humidity</p>
+      <p>{{weather.humidity}} %</p>
+    </div>
+  </div>
+
+</div>
